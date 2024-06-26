@@ -15,15 +15,34 @@
     <link rel="stylesheet" href="css/style.css" media="all">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://use.typekit.net/fci8ixc.css">
-
+    <style>
+        /* Optional: Style the play/pause button */
+        #music-control {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #music-control:hover {
+            background-color: #0056b3;
+        }
+    </style>
     <link href='https://fonts.googleapis.com/css?family=Press Start 2P' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Boogaloo' rel='stylesheet'>
 </head>
 <body>
-    <audio id="background-music" autoplay loop>
-        <source src="path/to/your-music-file.mp3" type="audio/mpeg">
+    <audio id="background-music" loop>
+        <source src="video/bg.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
+
+    <!-- Play/Pause Button -->
+    <button id="music-control">Play Music</button>
 
     <video id="background-video" playsinline autoplay loop muted>
   <source src="video/bonk-vid2.mp4" type="video/mp4">
@@ -297,6 +316,26 @@
 
   </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var audioElement = document.getElementById('background-music');
+        var musicControl = document.getElementById('music-control');
+        var isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                audioElement.pause();
+                musicControl.textContent = 'Play Music';
+            } else {
+                audioElement.play();
+                musicControl.textContent = 'Pause Music';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        musicControl.addEventListener('click', toggleMusic);
+    });
+</script>
 
 </body>
 <script>
