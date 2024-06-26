@@ -20,7 +20,8 @@
          /* Common styles for the music control buttons */
          .music-control {
             position: fixed;
-          
+            
+            border: none;
             padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
@@ -50,8 +51,8 @@
     </audio>
 
     <!-- Play/Pause Button -->
-    <button id="music-control-top" class="music-control hero-button fon">Play Music</button>
-    <button id="music-control-bottom" class="music-control hero-button fon">Play Music</button>
+    <button id="music-control-top" class="music-control hero-button fon" style="font-size: 12px; letter-spacing:1px;">Play Music</button>
+    <button id="music-control-bottom" class="music-control hero-button fon" style="font-size: 12px; letter-spacing:1px;">Play Music</button>
 
 
     <video id="background-video" playsinline autoplay loop muted>
@@ -329,23 +330,47 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var audioElement = document.getElementById('background-music');
-        var musicControl = document.getElementById('music-control');
+        var musicControlTop = document.getElementById('music-control-top');
+        var musicControlBottom = document.getElementById('music-control-bottom');
         var isPlaying = false;
 
+        // Function to unmute and play the audio
+        function unmuteAndPlayAudio() {
+            audioElement.muted = false;
+            audioElement.play();
+            isPlaying = true;
+            musicControlTop.textContent = 'Pause Music';
+            musicControlBottom.textContent = 'Pause Music';
+        }
+
+        // Autoplay the audio by initially playing it muted and then unmuting it
+        audioElement.play().then(function() {
+            setTimeout(unmuteAndPlayAudio, 100); // Small delay to ensure autoplay
+        }).catch(function(error) {
+            // If autoplay fails, allow user to manually play the music
+            console.log('Autoplay was prevented:', error);
+            musicControlTop.textContent = 'Play Music';
+            musicControlBottom.textContent = 'Play Music';
+        });
+
+        // Toggle music play/pause on button click
         function toggleMusic() {
             if (isPlaying) {
                 audioElement.pause();
-                musicControl.textContent = 'Play Music';
+                musicControlTop.textContent = 'Play Music';
+                musicControlBottom.textContent = 'Play Music';
             } else {
                 audioElement.play();
-                musicControl.textContent = 'Pause Music';
+                musicControlTop.textContent = 'Pause Music';
+                musicControlBottom.textContent = 'Pause Music';
             }
             isPlaying = !isPlaying;
         }
 
-        musicControl.addEventListener('click', toggleMusic);
+        musicControlTop.addEventListener('click', toggleMusic);
+        musicControlBottom.addEventListener('click', toggleMusic);
     });
-</script>
+</script>>
 
 </body>
 <script>
