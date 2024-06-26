@@ -17,19 +17,27 @@
     <link rel="stylesheet" href="https://use.typekit.net/fci8ixc.css">
     <style>
         /* Optional: Style the play/pause button */
-        #music-control {
+         /* Common styles for the music control buttons */
+         .music-control {
             position: fixed;
-            bottom: 10px;
-            right: 10px;
-            background-color: #007bff;
-            color: white;
-            border: none;
+          
             padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
+            z-index: 1000; /* Increase z-index to place buttons above other content */
         }
-        #music-control:hover {
-            background-color: #0056b3;
+        .music-control:hover {
+          
+        }
+
+        /* Specific positioning for top-left and bottom-right buttons */
+        #music-control-top {
+            top: 10px;
+            left: 10px;
+        }
+        #music-control-bottom {
+            bottom: 10px;
+            right: 10px;
         }
     </style>
     <link href='https://fonts.googleapis.com/css?family=Press Start 2P' rel='stylesheet'>
@@ -42,7 +50,9 @@
     </audio>
 
     <!-- Play/Pause Button -->
-    <button id="music-control">Play Music</button>
+    <button id="music-control-top" class="music-control hero-button fon">Play Music</button>
+    <button id="music-control-bottom" class="music-control hero-button fon">Play Music</button>
+
 
     <video id="background-video" playsinline autoplay loop muted>
   <source src="video/bonk-vid2.mp4" type="video/mp4">
@@ -58,8 +68,8 @@
              <p class="hero-text" style="color:#ff6200 ;">INTRODUCING</p>
                 <p class="fon" style="font-size: 32px;">THE INTERNET <br> (HTTPS)</p>
                <div class="btnwrap">
-                <!-- <a class="hero-button fon" style="font-size: 16px; letter-spacing:1px; margin: 5px 5px;" href="index.html#" id="myBtn">BUY HTTPS</a> -->
-                <a class="hero-button fon" style="font-size: 16px; letter-spacing:1px;" href="index.html#" id="mySecondBtn">SOCIALS</a>
+                <p><a class="hero-button fon" style="font-size: 16px; letter-spacing:1px; margin-top: 5px;" href="index.html#" id="myBtn">BUY HTTPS</a> </p>
+                <div><a class="hero-button fon" style="font-size: 16px; letter-spacing:1px; margin: 5px 5px;" href="index.html#" id="mySecondBtn">SOCIALS</a></div>
                 </div>
                 <div class="partners"><a href="https://www.gate.io/de/trade/the-internet_USDT" target="_blank"><img src="images/logos/gateio.svg"></a><a href="https://www.bitget.com/spot/the-internetUSDT" target="_blank"><img src="images/logos/bitget.svg"></a><a href="https://www.mexc.com/exchange/the-internet_USDT?_from=search_spot_trade" target="_blank"><img src="images/logos/mexc.svg"></a><a href="https://www.bitmart.com/trade/en-US?symbol=the-internet_USDT" target="_blank"><img src="images/logos/bitmart.svg"></a><a href="https://skynet.certik.com/projects/baby-bonk" target="_blank"><img src="images/logos/certik.svg"></a><a href="https://coinmarketcap.com/currencies/baby-bonk-coin/" target="_blank"><img src="images/logos/cmc.svg"></a><a href="https://www.coingecko.com/en/coins/the-internet" target="_blank"><img src="images/logos/cg.svg"></a><a href="https://gotbit.io/" target="_blank"><img src="images/logos/gotbit.svg"></a><a href="https://flooz.xyz/trade/0xBb2826Ab03B6321E170F0558804F2B6488C98775?network=bsc" target="_blank"><img src="images/logos/flooz.SVG"></a></div>
             </div>
